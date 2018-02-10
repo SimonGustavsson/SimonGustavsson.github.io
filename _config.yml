@@ -26,7 +26,7 @@ github_username:  simongustavsson
 
 # Build settings
 markdown: kramdown
-theme: minima
+remote_theme: "mmistakes/minimal-mistakes"
 plugins:
   - jekyll-feed
 
