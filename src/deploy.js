@@ -1,17 +1,41 @@
 const { exec } = require('child_process');
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 const os = require('os');
 
-function removeFileAndFolder(tempPath, folder) {
-    fs.unlink(tempPath, err => {
-        if (err) throw err;
+(async function () {
+    const tempFolder = await fs.mkdtemp(path.join(os.tmpdir(), 'foo-'));
 
-        fs.rmdir(folder, err => {
-            if (err) throw err;
+    const tempJS = path.join(tempFolder, 'build\\main.min.js');
+    const tempHTML = path.join(tempFolder, 'index.html');
+
+    await fs.copyFile('build\\main.min.js', tempJS);
+    await fs.copyFile('index.html', tempHTML);
+    await execAsync('git checkout gh-pages');
+
+    await fs.copyFile(tempJS, 'main.min.js');
+    await fs.copyFile(tempHTML, 'index.html');
+
+    await execAsync('git add -A && git commit -m "New deploy" && git checkout master');
+
+    await fs.unlink(tempJS);
+    await fs.unlink(tempHTML);
+    await fs.rmdir(tempFolder);
+})();
+
+async function execAsync(command) {
+    return new Promise(function (resolve, reject) {
+        exec(command, (err, stdout, stderr) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(stdout);
+            }
         });
     });
 }
+
+/*
 
 fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
     if (err) throw err;
@@ -36,3 +60,5 @@ fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
         });
     });
 });
+
+*/
