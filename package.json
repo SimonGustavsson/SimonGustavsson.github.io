@@ -14,7 +14,8 @@
     "build-elm-prod": "node node_modules\\elm\\bin\\elm make src\\main.elm --output build\\main.optimized.js --optimize",
     "minify": "node node_modules\\uglify-js\\bin\\uglifyjs build\\main.optimized.js -o build\\main.min.js ",
     "build-prod": "npm run build-elm-prod && npm run minify",
-    "deploy": "npm run build-prod && node src\\deploy.js"
+    "deploy": "npm run build-prod && node src\\deploy.js",
+    "shipit": "node src\\deploy.js"
   },
   "repository": {
     "type": "git",
