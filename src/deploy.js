@@ -12,12 +12,12 @@ const os = require('os');
 
         await fs.copyFile('build\\main.min.js', tempJS);
         await fs.copyFile('index.html', tempHTML);
-        await execAsync('git checkout gh-pages');
+        await execAsync('git checkout master');
 
         await fs.copyFile(tempJS, 'main.min.js');
         await fs.copyFile(tempHTML, 'index.html');
 
-        await execAsync('git add -A && git commit -m "New deploy" && git checkout master');
+        await execAsync('git add -A && git commit -m "New deploy" && git checkout source');
 
         await fs.unlink(tempJS);
         await fs.unlink(tempHTML);
