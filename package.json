@@ -1,0 +1,19 @@
+{
+  "name": "simongustavsson.github.io",
+  "version": "1.0.0",
+  "description": "Source code for simongustavsson.github.io",
+  "main": "main.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimonGustavsson/SimonGustavsson.github.io.git"
+  },
+  "author": "simongustavsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SimonGustavsson/SimonGustavsson.github.io/issues"
+  },
+  "homepage": "https://github.com/SimonGustavsson/SimonGustavsson.github.io#readme"
+}
