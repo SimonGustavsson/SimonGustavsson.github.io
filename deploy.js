@@ -6,15 +6,11 @@ const os = require('os');
 function removeFileAndFolder(tempPath, folder) {
     fs.unlink(tempPath, err => {
         if (err) throw err;
-        console.log('Removed ' + tempPath);
 
         fs.rmdir(folder, err => {
             if (err) throw err;
-
-            console.log('Deleted ' + folder);
         });
     });
-
 }
 
 fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
@@ -24,8 +20,6 @@ fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
 
     fs.copyFile('main.min.js', tempPath, (err) => {
         if (err) throw err;
-
-        console.log('Copied main.min.js to ' + tempPath);
 
         exec('git checkout gh-pages', (err, stdout, stderr) => {
             if (err) throw new Error(err);
@@ -42,4 +36,3 @@ fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
         });
     });
 });
-
