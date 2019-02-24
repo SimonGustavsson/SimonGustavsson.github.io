@@ -14,7 +14,9 @@ const os = require('os');
         await fs.copyFile('index.html', tempHTML);
         await execAsync('git checkout master');
 
+        console.log(`Copying ${tempJS} to main.min.js`);
         await fs.copyFile(tempJS, 'main.min.js');
+        console.log(`Copying ${tempHTML} to main.min.js`);
         await fs.copyFile(tempHTML, 'index.html');
 
         await execAsync('git add -A');
