@@ -8,7 +8,7 @@ const os = require('os');
         const tempFolder = await fs.mkdtemp(path.join(os.tmpdir(), 'foo-'));
 
         const tempJS = path.join(tempFolder, 'main.min.js');
-        const tempHTML = path.join(tempFolder, 'index.html');
+        const tempHTML = path.join(tempFolder, 'play.html');
 
         await fs.copyFile('build\\main.min.js', tempJS);
         await fs.copyFile('index.html', tempHTML);
@@ -17,7 +17,7 @@ const os = require('os');
         console.log(`Copying ${tempJS} to main.min.js`);
         await fs.copyFile(tempJS, 'main.min.js');
         console.log(`Copying ${tempHTML} to main.min.js`);
-        await fs.copyFile(tempHTML, 'index.html');
+        await fs.copyFile(tempHTML, 'play.html');
 
         await execAsync('git add -A');
         await execAsync(`git commit -m "deployment-${new Date().getTime()}"`);
