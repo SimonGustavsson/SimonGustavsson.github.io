@@ -7,7 +7,7 @@ const os = require('os');
     try {
         const tempFolder = await fs.mkdtemp(path.join(os.tmpdir(), 'foo-'));
 
-        const tempJS = path.join(tempFolder, 'build\\main.min.js');
+        const tempJS = path.join(tempFolder, 'main.min.js');
         const tempHTML = path.join(tempFolder, 'index.html');
 
         await fs.copyFile('build\\main.min.js', tempJS);
