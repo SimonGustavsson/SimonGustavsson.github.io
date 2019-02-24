@@ -11,7 +11,7 @@ const os = require('os');
         const tempHTML = path.join(tempFolder, 'play.html');
 
         await fs.copyFile('build\\main.min.js', tempJS);
-        await fs.copyFile('index.html', tempHTML);
+        await fs.copyFile('play.html', tempHTML);
         await execAsync('git checkout master');
 
         console.log(`Copying ${tempJS} to main.min.js`);
