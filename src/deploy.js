@@ -31,6 +31,9 @@ async function execAsync(command) {
     return new Promise(function (resolve, reject) {
         exec(command, (err, stdout, stderr) => {
             if (err) {
+                console.error(`execAsync failed. Stdout: ${stdout}`);
+                console.error(`execAsync failed. stderr: ${stderr}`);
+
                 reject(err);
             } else {
                 resolve(stdout);
