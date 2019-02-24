@@ -16,7 +16,8 @@ const os = require('os');
 
         console.log(`Copying ${tempJS} to main.min.js`);
         await fs.copyFile(tempJS, 'main.min.js');
-        console.log(`Copying ${tempHTML} to main.min.js`);
+
+        console.log(`Copying ${tempHTML} to play.html`);
         await fs.copyFile(tempHTML, 'play.html');
 
         await execAsync('git add -A');
