@@ -17,7 +17,7 @@ const os = require('os');
         await fs.copyFile(tempJS, 'main.min.js');
         await fs.copyFile(tempHTML, 'index.html');
 
-        await execAsync('git add -A && git commit -m "New deploy" && git checkout source');
+        await execAsync('git add -A && git commit -m "New deploy" && git push && git checkout source');
 
         await fs.unlink(tempJS);
         await fs.unlink(tempHTML);
