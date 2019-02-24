@@ -4,23 +4,27 @@ const path = require('path');
 const os = require('os');
 
 (async function () {
-    const tempFolder = await fs.mkdtemp(path.join(os.tmpdir(), 'foo-'));
+    try {
+        const tempFolder = await fs.mkdtemp(path.join(os.tmpdir(), 'foo-'));
 
-    const tempJS = path.join(tempFolder, 'build\\main.min.js');
-    const tempHTML = path.join(tempFolder, 'index.html');
+        const tempJS = path.join(tempFolder, 'build\\main.min.js');
+        const tempHTML = path.join(tempFolder, 'index.html');
 
-    await fs.copyFile('build\\main.min.js', tempJS);
-    await fs.copyFile('index.html', tempHTML);
-    await execAsync('git checkout gh-pages');
+        await fs.copyFile('build\\main.min.js', tempJS);
+        await fs.copyFile('index.html', tempHTML);
+        await execAsync('git checkout gh-pages');
 
-    await fs.copyFile(tempJS, 'main.min.js');
-    await fs.copyFile(tempHTML, 'index.html');
+        await fs.copyFile(tempJS, 'main.min.js');
+        await fs.copyFile(tempHTML, 'index.html');
 
-    await execAsync('git add -A && git commit -m "New deploy" && git checkout master');
+        await execAsync('git add -A && git commit -m "New deploy" && git checkout master');
 
-    await fs.unlink(tempJS);
-    await fs.unlink(tempHTML);
-    await fs.rmdir(tempFolder);
+        await fs.unlink(tempJS);
+        await fs.unlink(tempHTML);
+        await fs.rmdir(tempFolder);
+    } catch (err) {
+        console.error(`Deploy failed : ${err.message}`);
+    }
 })();
 
 async function execAsync(command) {
