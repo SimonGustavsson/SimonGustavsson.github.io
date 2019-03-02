@@ -6,9 +6,11 @@
   "devDependencies": {
     "chokidar-cli": "^1.2.2",
     "elm": "^0.19.0-bugfix6",
+    "elm-test": "^0.19.0-rev5",
     "uglify-js": "^3.4.9"
   },
   "scripts": {
+    "test": "node .\\node_modules\\elm-test\\bin\\elm-test",
     "watch": "chokidar \"**/*.elm\" -c \"npm run build-elm-dev\"",
     "build-elm-dev": "node node_modules\\elm\\bin\\elm make src\\main.elm --output build\\main.compiled.js --debug",
     "build-elm-prod": "node node_modules\\elm\\bin\\elm make src\\main.elm --output build\\main.optimized.js --optimize",

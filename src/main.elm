@@ -1,4 +1,4 @@
-module Main exposing (main)
+module Main exposing (Message(..), Model, Room, init, update, view)
 
 import Browser exposing (Document)
 import Browser.Dom
