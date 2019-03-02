@@ -183,9 +183,9 @@ handleCommand rawCommandString model =
                     addHistory "I'm sorry, Dave. I'm afraid I can't do that." model
 
 
-view : Model -> Html Message
+view : Model -> List (Html Message)
 view model =
-    div
+    [ div
         [ style "display" "flex"
         , style "flex-direction" "column"
         , style "flex-shrink" "0"
@@ -206,6 +206,7 @@ view model =
             (viewHistory model.history)
         , viewInput model
         ]
+    ]
 
 
 viewHistory : List HistoryEntry -> List (Html Message)

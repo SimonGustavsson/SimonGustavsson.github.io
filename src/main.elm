@@ -149,12 +149,12 @@ view model =
             case model.activeApp of
                 MUD mudModel ->
                     Mud.view mudModel
-                        |> Html.map MudMessage
+                        |> List.map (Html.map MudMessage)
 
                 Standard standardModel ->
                     Standard.view standardModel
-                        |> Html.map StandardMessage
+                        |> List.map (Html.map StandardMessage)
     in
     { title = "Simon Gustavsson"
-    , body = [ body ]
+    , body = body
     }
