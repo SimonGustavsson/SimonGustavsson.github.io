@@ -32,15 +32,14 @@ view model =
         , style "flex-shrink" "0"
         , style "height" "100%"
         ]
-        [ div [ class "switch-notice" ] [ span [] [ text "Can you show me " ], a [ href "#mud" ] [ text " that MUD thing again?" ] ]
+        [ div [ class "switch-notice" ] [ span [] [ text "Can you show me" ], a [ href "#mud" ] [ text "that MUD thing again?" ] ]
         , div
-            [ id "room"
+            [ id "content"
             , style "height" "100%"
             , style "display" "flex"
-            , style "font-family" "'Courier New', Courier, monospace"
             , style "flex-direction" "column"
             , style "overflow-x" "auto"
             , style "padding" "0 1em"
             ]
-            [ text "Beep teh boop!" ]
+            [ text "Beep boop! Simon has not yet created any content here..." ]
         ]
