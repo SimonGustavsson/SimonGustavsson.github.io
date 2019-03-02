@@ -27,8 +27,14 @@ type alias Item =
     }
 
 
+type RoomId
+    = Home
+    | Basement
+    | Kitchen
+
+
 type alias Room =
-    { id : String
+    { id : RoomId
     , description : String
     , navigation : List NavigationTarget
     , commands : List Command
@@ -38,7 +44,7 @@ type alias Room =
 
 type alias NavigationTarget =
     { direction : Direction
-    , roomId : String
+    , roomId : RoomId
     }
 
 
@@ -126,17 +132,17 @@ alwaysAvailableCommands =
 init : () -> ( Model, Cmd Message )
 init _ =
     let
-        firstRoom =
-            Room "Home" "You find yourself in the woods. There's a big suspicious looking hole in the ground." [ NavigationTarget Down "Basement" ] [] [ pencil ]
+        home =
+            Room Home "You find yourself in the woods. There's a big suspicious looking hole in the ground." [ NavigationTarget Down Basement ] [] [ pencil ]
 
         basement =
-            Room "Basement" "You've entered a basement. You immediately spot a strange corner to the left..." [ NavigationTarget Up "Home", NavigationTarget Left "Kitchen" ] [] []
+            Room Basement "You've entered a basement. You immediately spot a strange corner to the left..." [ NavigationTarget Up Home, NavigationTarget Left Kitchen ] [] []
 
         kitchen =
-            Room "Kitchen" "You go left through a rickety door and find yourself in a dingy old kitchen." [ NavigationTarget Right "Basement", NavigationTarget Down "Home" ] [] []
+            Room Kitchen "You go left through a rickety door and find yourself in a dingy old kitchen." [ NavigationTarget Right Basement ] [] []
 
         initialModel =
-            Model firstRoom firstRoom [] [ firstRoom, basement, kitchen ] "" []
+            Model home home [] [ home, basement, kitchen ] "" []
                 |> addHistory welcomeText
                 |> addHistory ""
                 |> showNavigated
