@@ -1,10 +1,12 @@
 module Main exposing (Model, main)
 
 import Browser exposing (Document, UrlRequest(..))
+import Browser.Dom as Dom
 import Browser.Navigation as Nav
-import Html exposing (text)
+import Html
 import Mud
 import Standard
+import Task
 import Url exposing (Url)
 
 
@@ -27,7 +29,8 @@ type ApplicationTarget
 
 
 type Msg
-    = ClickedUrl UrlRequest
+    = NoOp
+    | ClickedUrl UrlRequest
     | SwitchApplication ApplicationTarget
     | MudMessage Mud.Message
     | StandardMessage Standard.Msg
@@ -68,8 +71,8 @@ init _ url navKey =
             }
 
         appType =
-            case url.fragment of
-                Just "standard" ->
+            case url.query of
+                Just "page=visual" ->
                     Standard initialModel.standardData
 
                 _ ->
@@ -80,14 +83,8 @@ init _ url navKey =
 
 handleUrlChange : Url -> Msg
 handleUrlChange url =
-    case url.fragment of
-        Just "" ->
-            SwitchApplication MudTarget
-
-        Just "mud" ->
-            SwitchApplication MudTarget
-
-        Just "standard" ->
+    case url.query of
+        Just "page=visual" ->
             SwitchApplication StandardTarget
 
         _ ->
@@ -97,6 +94,9 @@ handleUrlChange url =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update message model =
     case message of
+        NoOp ->
+            ( model, Cmd.none )
+
         StandardMessage m ->
             let
                 ( newStandardModel, standardCommand ) =
@@ -115,7 +115,7 @@ update message model =
                     Mud.update m model.mudData
             in
             case model.activeApp of
-                MUD mudModel ->
+                MUD _ ->
                     ( { model | activeApp = MUD newMudModel, mudData = newMudModel }, Cmd.map MudMessage mudCommand )
 
                 _ ->
@@ -132,14 +132,34 @@ update message model =
         ClickedUrl request ->
             case request of
                 Internal url ->
-                    ( model
-                    , Nav.pushUrl model.key (Url.toString url)
-                    )
+                    let
+                        stringUrl =
+                            Url.toString url
+
+                        navCommand =
+                            Nav.pushUrl model.key stringUrl
+
+                        scrollCommand =
+                            case url.fragment of
+                                Just frag ->
+                                    scrollBodyToElement frag
+
+                                _ ->
+                                    Cmd.none
+                    in
+                    ( model, Cmd.batch [ navCommand, scrollCommand ] )
 
                 External url ->
                     ( model
                     , Nav.load url
                     )
+
+
+scrollBodyToElement : String -> Cmd Msg
+scrollBodyToElement id =
+    Task.map2 (\a b -> ( a, b )) Dom.getViewport (Dom.getElement id)
+        |> Task.andThen (\( pageViewport, elementInfo ) -> Dom.setViewport pageViewport.viewport.x elementInfo.element.y)
+        |> Task.attempt (\_ -> NoOp)
 
 
 view : Model -> Document Msg

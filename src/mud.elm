@@ -1,6 +1,6 @@
 module Mud exposing (Message(..), Model, Room, init, update, view)
 
-import Browser exposing (Document)
+import Browser
 import Browser.Dom
 import Html exposing (Html, a, div, form, input, pre, span, text)
 import Html.Attributes exposing (class, href, id, name, placeholder, style, type_, value)
@@ -193,7 +193,7 @@ view model =
         , style "color" "#02f100"
         , style "height" "100%"
         ]
-        [ div [ class "switch-notice" ] [ span [] [ text "MUDs are sooo 1980's." ], a [ href "#standard" ] [ text "Take me to the real site" ] ]
+        [ div [ class "switch-notice" ] [ span [] [ text "MUDs are sooo 1980's." ], a [ href "?page=visual" ] [ text "Take me to the real site" ] ]
         , div
             [ id "room"
             , style "height" "100%"

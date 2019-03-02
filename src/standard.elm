@@ -32,14 +32,20 @@ view model =
 
 
 viewSecondSection : Model -> Html Msg
-viewSecondSection model =
-    div [ id "second", style "height" "100%" ] [ text "Im a second page" ]
+viewSecondSection _ =
+    div
+        [ id "aboutme"
+        , style "height" "100%"
+        , style "color" "#FFF"
+        ]
+        [ text "Im a second page" ]
 
 
 viewFirstSection : Model -> Html Msg
-viewFirstSection model =
+viewFirstSection _ =
     div
-        [ style "display" "flex"
+        [ id "home"
+        , style "display" "flex"
         , style "flex-direction" "column"
         , style "flex-shrink" "0"
         , style "height" "100%"
@@ -47,7 +53,7 @@ viewFirstSection model =
         , style "font-feature-settings" "kern"
         , style "color" "#FFF"
         ]
-        [ div [ class "switch-notice" ] [ span [] [ text "Can you show me" ], a [ href "#mud" ] [ text "that MUD thing again?" ] ]
+        [ div [ class "switch-notice" ] [ span [] [ text "Can you show me" ], a [ href "?page=mud" ] [ text "that MUD thing again?" ] ]
         , viewMenu
         , div
             [ id "welcome-page"
@@ -86,7 +92,7 @@ viewMenu =
         ]
         [ div [ style "display" "flex", style "justify-content" "space-between", style "width" "20%", style "font-size" "1.3em", style "padding" "0.5em 0" ]
             [ a (menuItemBaseStyle "#home") [ div [] [ text "home" ] ]
-            , a (menuItemBaseStyle "#about") [ div [] [ text "about" ] ]
+            , a (menuItemBaseStyle "#aboutme") [ div [] [ text "about" ] ]
             , a (style "border" "#fff 1px solid" :: menuItemBaseStyle "contact") [ div [] [ text "contact" ] ]
             ]
         ]
