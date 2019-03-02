@@ -155,6 +155,6 @@ view model =
                     Standard.view standardModel
                         |> Html.map StandardMessage
     in
-    { title = "Testing"
+    { title = "Simon Gustavsson"
     , body = [ body ]
     }
