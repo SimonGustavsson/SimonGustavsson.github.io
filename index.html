@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
-	<title>Main</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Description" content="Simon Gustavsson - Developer of Software">
+	<title>Simon Gustavsson</title>
 	<style type="text/css">
 		html,
 		body {
@@ -11,11 +13,34 @@
 			height: 100%;
 			margin: 0
 		}
+
+		.switch-notice {
+			padding: 0.5em;
+			background: #EEE;
+			color: #123;
+		}
+
+		#room {
+			border-top: 3px #000 solid;
+		}
+
+		.switch-notice>a {
+			margin-left: 0.5em;
+			text-decoration: none;
+		}
+
+		.switch-notice>a:visited {
+			color: blue;
+		}
 	</style>
 </head>
 
 <body>
-    <span>Coming soon...</span>
+	<div id="elm">Loading...</div>
+	<script src="main.compiled.js" type="text/javascript"></script>
+	<script>
+		var app = Elm.Main.init({ node: document.getElementById("elm") });
+	</script>
 </body>
 
 </html>
