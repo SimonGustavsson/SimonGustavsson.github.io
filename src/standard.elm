@@ -1,6 +1,6 @@
 module Standard exposing (Model, Msg, init, update, view)
 
-import Html exposing (Html, a, div, span, text)
+import Html exposing (Html, a, div, img, span, text)
 import Html.Attributes exposing (class, href, id, style)
 
 
@@ -37,8 +37,21 @@ viewSecondSection _ =
         [ id "aboutme"
         , style "height" "100%"
         , style "color" "#FFF"
+        , style "display" "flex"
+        , style "justify-content" "center"
+        , style "align-items" "center"
         ]
-        [ text "Im a second page" ]
+        [ div
+            [ class "aboutme-container"
+            , style "border" "#FFF 1px solid"
+            , style "padding" "1em"
+            , style "min-width" "800px"
+            , style "min-height" "400px"
+            ]
+            [ img [ style "border" "#fff 1px solid", style "width" "230px", style "height" "230px" ] []
+            , span [] [ text "Hello, I'm Simon! I am a senior software engineer." ]
+            ]
+        ]
 
 
 viewFirstSection : Model -> Html Msg
