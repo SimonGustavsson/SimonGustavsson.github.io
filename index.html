@@ -9,7 +9,15 @@
     <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="tailwind.css" />
     <style>
+        html,
         body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -21,11 +29,39 @@
         section {
             margin-bottom: 5rem;
         }
+
+        #mud-banner {
+            flex-shrink: 0;
+            background: #f6f3f2;
+            color: #454557;
+            border-bottom: 1px solid #c5c4da;
+            text-align: center;
+            padding: 0.5em 1em;
+            font-size: 0.9rem;
+        }
+
+        #mud-banner a {
+            color: #0001ab;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        #mud-stage {
+            flex: 1;
+            min-height: 0;
+            width: 100%;
+            background: #000;
+        }
     </style>
 </head>
 
 <body
     class="bg-background text-on-surface font-body-md text-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <div id="mud-banner">
+        <span id="banner-prefix"></span><a href="#" id="banner-link"></a><span id="banner-suffix"></span>
+    </div>
+    <div id="mud-stage"></div>
+    <div id="real-site" style="display: none">
     <header class="w-full max-w-max-width mx-auto border-b border-outline-variant dark:border-outline">
         <nav class="flex justify-between items-center py-stack-sm px-stack-sm max-w-max-width mx-auto">
             <div class="font-headline-md text-headline-md text-on-surface dark:text-on-surface">
@@ -115,6 +151,51 @@
             </div>
         </div>
     </footer>
+    </div>
+
+    <script src="mud.min.js"></script>
+    <script>
+        (function () {
+            var stage = document.getElementById('mud-stage');
+            var realSite = document.getElementById('real-site');
+            var prefix = document.getElementById('banner-prefix');
+            var link = document.getElementById('banner-link');
+            var suffix = document.getElementById('banner-suffix');
+
+            function showMud() {
+                realSite.style.display = 'none';
+                stage.style.display = '';
+                stage.innerHTML = '';
+                var mount = document.createElement('div');
+                stage.appendChild(mount);
+                Elm.Main.init({ node: mount });
+
+                prefix.textContent = "MUDs are so 1980's, take me to the ";
+                link.textContent = 'real site';
+                suffix.textContent = '';
+                link.onclick = function (e) {
+                    e.preventDefault();
+                    showRealSite();
+                };
+            }
+
+            function showRealSite() {
+                stage.style.display = 'none';
+                stage.innerHTML = '';
+                realSite.style.display = '';
+
+                prefix.textContent = 'What was that ';
+                link.textContent = 'MUD';
+                suffix.textContent = ' thing again..?';
+                link.onclick = function (e) {
+                    e.preventDefault();
+                    showMud();
+                };
+            }
+
+            showMud();
+        })();
+    </script>
 </body>
 
 </html>
