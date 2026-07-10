@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>~/simon - Bio</title>
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="tailwind.css" />
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            transition: color 0.2s ease;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background text-on-surface font-body-md text-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <!-- TopNavBar -->
+    <header class="w-full max-w-max-width mx-auto border-b border-outline-variant dark:border-outline">
+        <nav class="flex justify-between items-center py-stack-sm px-stack-sm max-w-max-width mx-auto">
+            <div class="font-headline-md text-headline-md text-on-surface dark:text-on-surface">
+                ~/simon
+            </div>
+            <div class="flex gap-4 items-center">
+                <a class="text-on-surface-variant dark:text-on-surface-variant font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors cursor-pointer"
+                    href="index.html">root</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors cursor-pointer"
+                    href="projects.html">projects</a>
+                <a class="text-primary dark:text-inverse-primary underline underline-offset-8 font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors cursor-pointer"
+                    href="bio.html">bio</a>
+            </div>
+        </nav>
+    </header>
+    <main class="max-w-max-width mx-auto px-stack-sm mt-stack-lg">
+        <!-- Bio Hero -->
+        <section>
+            <h1 class="font-headline-lg text-headline-lg mb-stack-sm">Hi, I'm Simon.</h1>
+            <p class="text-body-lg font-body-lg text-on-surface-variant max-w-[60ch]">
+                Software engineer. Full time curious person. This is the story part of the
+                site, if you want it.
+            </p>
+        </section>
+        <!-- Hero Image -->
+        <section>
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCSu3D2rzoxCRmF2bYhz4tKeeTA56psFTKzRFyxJzcUi78UUbyA5ysMIxV5qYwsitQ76JH94mQUlKW38hzdERQWxDcCVJOTJaKm31l7VAn87dBqebJlP46-TsTzwp09MY8R8uTlRgFrxT65Jk_aa3XqWGdncfVn-Lv9qtVcNRyERwhJBsQ9ptD4attJbvMzrkg0wgSScL0hDlDxXnYw1_Q2sSL3r4e7UEbu_bQNmwYFrlKN5Njsb8"
+                alt="Stock photo of a photogenic person, not actually Simon"
+                class="w-full h-[400px] object-cover rounded-xl" />
+            <p class="text-label-sm font-label-sm text-outline mt-2 italic">
+                This is not me, this is just a photogenic person in a stock photo.
+            </p>
+        </section>
+        <!-- The Journey -->
+        <section>
+            <h2 class="font-headline-md text-headline-md mb-stack-md">The Journey</h2>
+            <div class="flex flex-col gap-stack-sm max-w-[70ch] text-on-surface-variant">
+                <p>I grew up in the MySpace era of customizing my page using copy-pasted HTML+CSS (R.I.P
+                    &lt;marquee /&gt;), and once I came across PHP and saw that by typing just a few lines of
+                    magic I could fill an entire page I was <strong>hooked</strong>.</p>
+                <pre
+                    class="bg-surface-container-low text-on-surface p-stack-sm rounded-lg overflow-x-auto text-sm font-mono leading-relaxed"><code>for ($i = 1; $i &lt;= 6; $i++) {
+    echo "&lt;h{$i}&gt;Heading {$i}&lt;/h{$i}&gt;\n";
+}</code></pre>
+                <p>I went on to officially study programming and immediately got thrusted into a world of
+                    pointers and pointers to pointers, … to pointers (where half my class failed). Through
+                    sheer force of will (read: stubbornness) I persisted, then took a hiatus from programming
+                    while I amassed a huge wealth of knowledge and skills in the art of World of Warcraft,
+                    before dusting them back off. In 2011 I moved from Sweden to England and joined a
+                    fantastic little company called
+                    <a class="text-primary underline hover:text-primary-container decoration-1 underline-offset-4"
+                        href="https://www.driveworks.co.uk">DriveWorks</a>, working on the Microsoft stack.
+                </p>
+                <p>As someone that has always relentlessly pursued answers and demanded to know “how things
+                    work” (sorry for all the “Why?”s, mom!), I was <strong>pumped</strong> when the Raspberry
+                    Pi 1 came out, immediately bought one and started hacking away at ARM assembly, bending
+                    that tiny embedded LED to my will. Once assembly became too cumbersome and I started
+                    writing more C, what started out as 10 lines of assembly quickly grew over the coming
+                    years, a driver for reading from the SD card here, a display driver to render a console
+                    there, down to a full USB stack with keyboard &amp; mouse support.</p>
+                <pre
+                    class="bg-surface-container-low text-on-surface p-stack-sm rounded-lg overflow-x-auto text-sm font-mono leading-relaxed"><code>_start:
+ldr r0,=BASE
+ldr r1,=SET_BIT3
+str r1,[r0,#GPFSEL2]
+ldr r1,=SET_BIT21
+str r1,[r0,#GPSET0]</code></pre>
+                <p>I moved again in 2017, this time across the pond to the good ‘ol US of A to be with my
+                    (now) wife, staying on at DriveWorks as their first remote engineer until 2019 when I was
+                    ready to take on a brave new challenge in another domain. Entering, HubSpot — a
+                    <strong>massive</strong> change, moving from code that reached customers a few times a year
+                    to code that reached them a few times a <strong>day</strong>.
+                </p>
+                <p>Over time, the itch to just write some code™️ in my spare time returned, which coincided
+                    with me being fortunate enough to be able to buy a whole house with my wife. I’ve always
+                    loved the idea of connecting software to the physical world so it should come as no
+                    surprise that the world of IoT had caught my attention!</p>
+                <ul class="list-disc pl-6 space-y-3">
+                    <li>Do I, install Home Assistant (or IFTTT/Homebridge/Homey/Hubitat/OpenHAB/Apple
+                        home/…)? Of course not, the itch is to write some code™️, not spend my evenings trying
+                        to debug yaml.</li>
+                    <li>Do I, create a web app that displays various stats gathered from sensors around my
+                        house? Of course not, I create a drag and drop dashboard builder where I can build
+                        <code class="bg-surface-container-low px-1 rounded">n</code> dashboards (one for each
+                        room where I want it) with click, navigate, modal popup etc support.
+                    </li>
+                    <li>Do I, run a background process to provide automations (“At 17:30 turn on Dining Room
+                        lights”)? Of course not, I create a workflow engine with a visual editor where you can
+                        map out all of the states you want, connect them together with conditions and actions
+                        that get executed when entering a state.</li>
+                    <li>Do I, install libraries so that I can interface with the various IoT devices I have my
+                        eye on? Of course not, I scour the web for the HAP specification and build an entirely
+                        custom implementation.</li>
+                </ul>
+                <figure>
+                    <img src="limha.png" alt="Screenshot of Limha, Simon's home automation dashboard"
+                        class="w-full rounded-xl border border-outline-variant" />
+                    <figcaption class="text-label-sm font-label-sm text-outline mt-2">Limha - small overview of devices.
+                    </figcaption>
+                </figure>
+                <p>The home automation system I’d built ran on my laptop for the longest time, before I
+                    graduated to running it on a single Intel NUC. These days it runs on a k3s cluster in a
+                    server rack in my house — which meant reintroducing the yaml I’d just spent a whole
+                    paragraph making fun of. The yaml is (mostly) gone now, because I ended up building
+                    <a class="text-primary underline hover:text-primary-container decoration-1 underline-offset-4"
+                        href="nimbus.html">Nimbus</a> instead: a cluster management app that provisions VMs,
+                    deploys and scales things, and runs CI for everything I write. More on that on the
+                    <a class="text-primary underline hover:text-primary-container decoration-1 underline-offset-4"
+                        href="projects.html">projects page</a>.
+                </p>
+                <p>If you've read this far and are wondering whether any of it &mdash; the PHP, the assembly,
+                    the dashboards nobody asked for &mdash; was the practical, sensible way to do things: no.
+                    But it's <strong>fun</strong>, and I learn a lot. Any software engineer can tell you we're
+                    all too familiar with having to be pragmatic at work; programming at home, on hobby
+                    projects, is the outlet where I get to not be.</p>
+                <p class="italic mt-stack-sm">So long (for now)<br>— Simon</p>
+            </div>
+        </section>
+    </main>
+    <footer class="w-full max-w-max-width mx-auto mt-stack-lg border-t border-outline-variant dark:border-outline">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center py-stack-md px-stack-sm max-w-max-width mx-auto gap-4 font-label-sm text-label-sm text-tertiary dark:text-tertiary-fixed-dim">
+            <div class="font-label-sm text-label-sm text-on-surface">
+                © 2026 handcrafted with organic cage-free DIVs
+            </div>
+            <div class="flex gap-4">
+                <a class="text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-opacity hover:opacity-80"
+                    href="http://github.com/SimonGustavsson">github</a>
+                <a class="text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-opacity hover:opacity-80"
+                    href="https://www.linkedin.com/in/simongustavsson/">linkedin</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
