@@ -163,8 +163,10 @@
             var prefix = document.getElementById('banner-prefix');
             var link = document.getElementById('banner-link');
             var suffix = document.getElementById('banner-suffix');
+            var STORAGE_KEY = 'siteMode';
 
             function showMud() {
+                localStorage.setItem(STORAGE_KEY, 'mud');
                 realSite.style.display = 'none';
                 stage.style.display = '';
                 stage.innerHTML = '';
@@ -182,6 +184,7 @@
             }
 
             function showRealSite() {
+                localStorage.setItem(STORAGE_KEY, 'real');
                 stage.style.display = 'none';
                 stage.innerHTML = '';
                 realSite.style.display = '';
@@ -195,7 +198,11 @@
                 };
             }
 
-            showMud();
+            if (localStorage.getItem(STORAGE_KEY) === 'real') {
+                showRealSite();
+            } else {
+                showMud();
+            }
         })();
     </script>
 </body>
