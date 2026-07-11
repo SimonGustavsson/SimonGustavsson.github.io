@@ -21,11 +21,29 @@
         section {
             margin-bottom: 5rem;
         }
+
+        #mud-banner {
+            background: #f6f3f2;
+            color: #454557;
+            border-bottom: 1px solid #c5c4da;
+            text-align: center;
+            padding: 0.5em 1em;
+            font-size: 0.9rem;
+        }
+
+        #mud-banner a {
+            color: #0001ab;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
     </style>
 </head>
 
 <body
     class="bg-background text-on-surface font-body-md text-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <div id="mud-banner">
+        What was that <a href="index.html" id="banner-link">MUD</a> thing again..?
+    </div>
     <!-- TopNavBar -->
     <header class="w-full max-w-max-width mx-auto border-b border-outline-variant dark:border-outline">
         <nav class="flex justify-between items-center py-stack-sm px-stack-sm max-w-max-width mx-auto">
@@ -155,6 +173,11 @@ str r1,[r0,#GPSET0]</code></pre>
             </div>
         </div>
     </footer>
+    <script>
+        document.getElementById('banner-link').addEventListener('click', function () {
+            localStorage.setItem('siteMode', 'mud');
+        });
+    </script>
 </body>
 
 </html>
